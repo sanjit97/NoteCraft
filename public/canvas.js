@@ -20,6 +20,7 @@ let track = 0; // Latest used image from the tracker stack
 const tool = canvas.getContext('2d'); //Using the API provided by canvas to leverage graphics
 tool.strokeStyle = pencilColor; //Setting default colour
 tool.lineWidth = pencilWidth; //Setting default width
+tool.fillStyle = "#FFF";
 
 canvas.addEventListener('mousedown', e => {
     mousedown=true;
@@ -44,7 +45,7 @@ canvas.addEventListener('mousemove', e => {
 
 canvas.addEventListener('mouseup', e => {
     mousedown=false;
-    let url = canvas.toDataURL();
+    let url = getCanvasImage();
     undoRedoTracker.push(url);
     track = undoRedoTracker.length-1;
 });
@@ -86,9 +87,14 @@ function drawPath(strokeObject){
 }
 
 pencilColorCont.forEach(color => {
+    if(color.classList[0] === pencilColor){
+        color.classList.add('active-pencil-color-border');
+    }
     color.addEventListener('click',e=>{
+        pencilColorCont.forEach(color => color.classList.remove('active-pencil-color-border'));
         pencilColor = color.classList[0];
         tool.strokeStyle = color.classList[0];
+        color.classList.add('active-pencil-color-border');
     })
 });
 
@@ -115,7 +121,7 @@ eraserWidthElement.addEventListener('change',e=>{
 });
 
 const downloadCanvas = (e) => {
-    const canvasURL = canvas.toDataURL();
+    const canvasURL = getCanvasImage();
     const anchorElement = document.createElement('a');
     anchorElement.setAttribute('href',canvasURL);
     anchorElement.download = 'board.jpg';
@@ -131,6 +137,16 @@ function undoRedoCanvasFn(trackObj){
     img.onload = function() {
         tool.drawImage(img, 0, 0, canvas.width, canvas.height);
     }
+}
+
+//This function is override the default black background colour when canvas jpg is created from toDataURL.
+function getCanvasImage(){
+    let newCanvas = canvas.cloneNode(true);
+    let ctx = newCanvas.getContext('2d');
+    ctx.fillStyle = "#FFF";
+    ctx.fillRect(0, 0, newCanvas.width, newCanvas.height);
+    ctx.drawImage(canvas, 0, 0);
+    return newCanvas.toDataURL("image/jpeg",1.0);
 }
 
 //When you get data from server for beginPath, call the required function

@@ -4,6 +4,7 @@
 body {
     margin: 0;
     padding: 0;
+    cursor: url('./circle-cursor.png') 15 15, auto;
 }
 
 .toggle-tools-div {
@@ -16,7 +17,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     font-size: 1.5rem;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
@@ -38,6 +39,17 @@ i{
     color:#FF6868;
     text-align: center;
     cursor: pointer;
+    padding: 10px;
+}
+
+i:hover{
+    color: #DCFFB7; 
+    background-color:#FF6868;
+}
+
+.icon-active{
+    color: #DCFFB7; 
+    background-color:#FF6868;
 }
 
 .scale-tools {
@@ -66,6 +78,7 @@ i{
     left: 25vw;
     border-radius: 3px;
     display: none;
+    cursor: pointer;
 }
 .pencil-width-cont {
     height: 2rem;
@@ -85,8 +98,8 @@ i{
 }
 .pencil-color {
     width: 1.5rem;
-    height: 2rem;
-    border-radius: 50%;
+    height: 1.5rem;
+    /* border-radius: 50%; */
 }
 .black {
     background-color: black;
@@ -96,6 +109,9 @@ i{
 }
 .blue {
     background-color: blue;
+}
+.active-pencil-color-border{
+    border: 3px solid yellowgreen;
 }
 .eraser-tool-cont {
     height: 2rem;
@@ -109,6 +125,7 @@ i{
     top: 6rem;
     left: 34vw;
     padding-top: 5px;
+    cursor: pointer;
 }
 .eraser-tool-cont input {
     width: 80%;

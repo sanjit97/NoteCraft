@@ -8,17 +8,23 @@ const eraserToolIcon = document.querySelector(".fa-eraser");
 const stickyNoteIcon = document.querySelector(".fa-note-sticky");
 const uploadIcon = document.querySelector(".fa-upload");
 
+pencilToolIcon.classList.add('icon-active');
+
 toggleToolsIcon.addEventListener("click", (e) => {
   if (showTools) hideToolContainer();
   else showToolContainer();
 });
 
 pencilToolIcon.addEventListener("click", (e) => {
+  eraserToolIcon.classList.remove('icon-active');
+  pencilToolIcon.classList.add('icon-active');
   if (showPencilTool) hidePencilToolContainer();
   else showPencilToolContainer();
 });
 
 eraserToolIcon.addEventListener("click", (e) => {
+  pencilToolIcon.classList.remove('icon-active');
+  eraserToolIcon.classList.add('icon-active');
   if (showEraserTool) hideEraserToolContainer();
   else showEraserToolContainer();
 });
