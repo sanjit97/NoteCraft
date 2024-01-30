@@ -1,0 +1,28 @@
+{
+  "name": "notecraft",
+  "version": "1.0.0",
+  "description": "This is NoteCraft project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanjit97/NoteCraft.git"
+  },
+  "keywords": [
+    "notes"
+  ],
+  "author": "Sanjit Vinod",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sanjit97/NoteCraft/issues"
+  },
+  "homepage": "https://github.com/sanjit97/NoteCraft#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^3.0.3",
+    "socket.io": "^4.7.4"
+  }
+}
